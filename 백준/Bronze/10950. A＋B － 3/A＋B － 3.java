@@ -19,7 +19,6 @@ public class Main {
             int b = Integer.parseInt(lineArray[1]);
 
             System.out.println(a + b);
-
         }
     }
 }
