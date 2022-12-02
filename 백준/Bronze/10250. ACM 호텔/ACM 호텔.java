@@ -14,19 +14,23 @@ public class Main {
             int W = Integer.parseInt(nums[1]);
             int N = Integer.parseInt(nums[2]);
 
-            int x = N / H;
-            int y = N % H;
-            StringBuilder sb = new StringBuilder();
-            if (y != 0) {
-                sb.append(y);
-                if (x + 1 <= 9)
-                    sb.append(0);
-                sb.append(x + 1);
+            int YY, XX;
+            int ho = N / H;
+            int floor = N % H;
+            if (floor != 0) {
+                YY = floor;
+                XX = ho + 1;
             } else {
-                sb.append(H);
-                if (x <= 9)
-                    sb.append(0);
-                sb.append(x);
+                YY = H;
+                XX = ho;
+            }
+
+            StringBuilder sb = new StringBuilder();
+            sb.append(YY);
+            if (XX <= 9) {
+                sb.append(0).append(XX);
+            } else {
+                sb.append(XX);
             }
             System.out.println(sb);
         }
