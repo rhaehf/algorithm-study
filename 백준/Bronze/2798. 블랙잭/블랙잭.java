@@ -14,13 +14,13 @@ public class Main {
 
         String[] cardList = br.readLine().split(" ");
 
-        ArrayList<Integer> numList = new ArrayList<>();
-        for(String num: cardList) {
-            numList.add(Integer.parseInt(num));
-        }
+//        ArrayList<Integer> numList = new ArrayList<>();
+//        for(String num: cardList) {
+//            numList.add(Integer.parseInt(num));
+//        }
 //        System.out.println(numList);
 
-//        int[] cards = Arrays.stream(cardList).mapToInt(Integer::parseInt).toArray();
+        int[] cards = Arrays.stream(cardList).mapToInt(Integer::parseInt).toArray();
 //        System.out.println(Arrays.toString(cards));
 
         int max = 0;
@@ -31,7 +31,8 @@ public class Main {
             for (int j = i+1; j < N-1; j++) {
                 // 세번재 카드 k는 j 다음부터 N까지 순회
                 for (int k = j+1; k < N; k++) {
-                    int sum = numList.get(i) + numList.get(j) + numList.get(k);
+//                    int sum = numList.get(i) + numList.get(j) + numList.get(k);
+                    int sum = cards[i] + cards[j] + cards[k];
                     if(sum <= M){
                         max = Math.max(max, sum);
                     }
