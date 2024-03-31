@@ -12,12 +12,12 @@ public class Main {
 //        System.out.println("poly : " + Arrays.toString(poly));
 
 //        System.out.println("poly 길이 : " + poly.length);
-        if (poly.length == 1) {
-            if(poly[0].equals(".")){
+        if (poly.length == 1) { // 바로 엔터치는 것도 길이가 1로 나옴
+            if (poly[0].equals(".")) {
                 System.out.println(".");
-            } else if(poly[0].equals("X")) {
+            } else if (poly[0].equals("X")) {
                 System.out.println("-1");
-            } else{
+            } else { // 엔터 쳤을 때 
                 System.out.println(poly[0]);
             }
             System.exit(0);
@@ -52,7 +52,7 @@ public class Main {
 //        System.out.println("makePoly 이후 : " + Arrays.toString(answer));
 
         // 콘솔에 문자 하나씩 출력
-        for(String strValue : answer) {
+        for (String strValue : answer) {
             System.out.print(strValue);
         }
     }
