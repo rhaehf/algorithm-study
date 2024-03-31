@@ -3,27 +3,23 @@ import java.util.Scanner;
 
 public class Main {
     static String[] answer;
+    static int countX = 0;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String line = sc.nextLine();
-//        System.out.println("line : " + line);
         String[] poly = line.split("");
-//        System.out.println("poly : " + Arrays.toString(poly));
 
-//        System.out.println("poly 길이 : " + poly.length);
         if (poly.length == 1) { // 바로 엔터치는 것도 길이가 1로 나옴
             if (poly[0].equals(".")) {
                 System.out.println(".");
             } else if (poly[0].equals("X")) {
                 System.out.println("-1");
-            } else { // 엔터 쳤을 때 
+            } else { // 엔터 쳤을 때
                 System.out.println(poly[0]);
             }
             System.exit(0);
         }
-
-        int countX = 0;
 
         answer = new String[poly.length];
         Arrays.fill(answer, "c");
@@ -37,7 +33,7 @@ public class Main {
                 answer[i] = ".";
 //                System.out.println(". 넣기 : " + Arrays.toString(answer));
 
-                replacePoly(countX, i);
+                replacePoly(i);
                 countX = 0;
 //                System.out.println("채우기 : " + Arrays.toString(answer));
             }
@@ -47,7 +43,7 @@ public class Main {
         // .으로 끝나지 않았을 때 바꾸지 못한 부분을 마저 바꿔주기
         if (countX != 0) {
 //            System.out.println("replacePoly 한번 더");
-            replacePoly(countX, poly.length);
+            replacePoly(poly.length);
         }
 //        System.out.println("makePoly 이후 : " + Arrays.toString(answer));
 
@@ -57,7 +53,7 @@ public class Main {
         }
     }
 
-    public static void replacePoly(int countX, int i) {
+    public static void replacePoly(int i) {
         // countX가 홀수면 -1 출력
         if (countX % 4 == 1 || countX % 4 == 3) {
             System.out.println("-1");
