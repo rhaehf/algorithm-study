@@ -16,7 +16,7 @@ public class Main {
             } else if (poly[0].equals("X")) {
                 System.out.println("-1");
             } else { // 엔터 쳤을 때
-                System.out.println(poly[0]);
+                System.out.println("");
             }
             System.exit(0);
         }
