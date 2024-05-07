@@ -2,20 +2,16 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Main {
     static int[] weights;
     static int[] heights;
-    static int[] result;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
         weights = new int[N];
         heights = new int[N];
-        result = new int[N];
 
         StringTokenizer st;
         for (int i = 0; i < N; i++) {
@@ -24,6 +20,7 @@ public class Main {
             heights[i] = Integer.parseInt(st.nextToken());
         }
 
+        StringBuilder sb = new StringBuilder();
         for (int one = 0; one < N; one++) {
             int w1 = weights[one];
             int h1 = heights[one];
@@ -44,10 +41,9 @@ public class Main {
                     }
                 }
             }
-            result[one] = rate + 1;
+            sb.append(rate + 1).append(" ");
         }
 
-//        System.out.println(IntStream.of(result).mapToObj(Integer::toString).collect(Collectors.joining(" ")));
-        System.out.println(IntStream.of(result).boxed().map(Object::toString).collect(Collectors.joining(" ")));
+        System.out.println(sb);
     }
 }
