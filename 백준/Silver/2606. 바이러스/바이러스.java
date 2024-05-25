@@ -8,8 +8,7 @@ import java.util.StringTokenizer;
 public class Main {
     static int[][] graph; // 그래프 배열
     static boolean[] visit; // 방문 체크 배열
-
-    static int virusCnt; // 바이러스에 걸린 컴퓨터 수
+    static int virusCnt = 0; // 바이러스에 걸린 컴퓨터 수
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -24,32 +23,26 @@ public class Main {
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
 
-            // 배열이기때문에 대칭적으로 값 넣어주기
             graph[a][b] = 1;
             graph[b][a] = 1;
         }
 
-        bfs(1);
+        dfs(1);
+        System.out.println(virusCnt - 1);
     }
 
-    static void bfs(int start) { // 너비 우선 탐색 구현
-        Queue<Integer> queue = new LinkedList<>();
+    static void dfs(int computer) { // 깊이 우선 탐색 구현
+        visit[computer] = true; // 1. 방문 처리
+        virusCnt++;
+//        System.out.print("computer : ");
+//        System.out.println(computer);
 
-        queue.add(start); // 1. 큐에 시작 노드 add
-        visit[start] = true; // 2. 방문 처리
-
-        while (!queue.isEmpty()) { // 3-1. 큐가 비어있는지 확인 (비어있다면 탐색 종료)
-            int pollNum = queue.poll(); // 3-2. 큐에서 노드를 poll
-
-            for (int i = 1; i < graph.length; i++) { // 3-3. poll한 노드와 인접한 모든 노드를 확인
-                if (graph[pollNum][i] == 1 && visit[i] == false) { // 인접해있고 && 방문하지 않았다면
-                    queue.add(i); // 3-4. 아직 방문하지 않은 노드를 큐에 add 하고
-                    visit[i] = true; // 3-5. 방문처리
-                    virusCnt++;
-                }
+        for (int i = 0; i < graph.length; i++) {
+            if (graph[computer][i] == 1 && visit[i] == false) {
+//                System.out.print("인접해있고, 방문하지않은 노드 i : ");
+//                System.out.println(i);
+                dfs(i); // 2. 내부적으로 재귀 호출
             }
         }
-
-        System.out.println(virusCnt);
     }
 }
