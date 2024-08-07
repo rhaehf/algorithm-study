@@ -12,7 +12,9 @@ class Solution {
             }
         }
         
-        Integer[] array = ts.toArray(new Integer[0]);
-        return Arrays.stream(array).mapToInt(Integer::intValue).toArray();
+        // new Integer[0]은 TreeSet의 크기에 맞는 배열이 자동으로 생성된다.
+        // Integer[] array = ts.toArray(new Integer[0]);
+        // return Arrays.stream(array).mapToInt(Integer::intValue).toArray();
+        return ts.stream().mapToInt(Integer::intValue).toArray();
     }
 }
