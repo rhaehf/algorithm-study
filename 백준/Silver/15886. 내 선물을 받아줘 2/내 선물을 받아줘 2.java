@@ -9,7 +9,8 @@ public class Main {
 
         char[] move = br.readLine().toCharArray();
         int count = 0;
-        for (int i = 0; i < move.length; i++) {
+        for (int i = 0; i < move.length - 1; i++) {
+            // ArrayIndexOutOfBoundsException 방지를 위해 move.length - 1로 수정
             if (move[i] == 'E' && move[i + 1] == 'W')
                 count++;
         }
