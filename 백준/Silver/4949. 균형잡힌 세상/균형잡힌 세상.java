@@ -15,10 +15,11 @@ public class Main {
 
             Stack<Character> stack = new Stack<>();
             for (char ch : line.toCharArray()) {
-                if (ch == '.') { // 문자열은 온점(".")으로 끝난다.
+                // 아래 부분을 빼도 되는 이유 : break;가 필요 없고, .을 검사하지 않아도 되는 이유는, 괄호 검사가 반드시 . 이전에 완료되기 때문이다.
+                /*if (ch == '.') { // 문자열은 온점(".")으로 끝난다.
                     break;
-                }
-
+                }*/
+                
                 if (ch == '(' || ch == '[')
                     stack.push(ch);
                 else if (ch == ')') {
