@@ -11,6 +11,8 @@ class Solution {
         int[] two = Arrays.copyOfRange(arr, a2, b2+1);
         int[] copy = new int[one.length + two.length];
         
+        // System.arraycopy(복사 대상 배열, 복사 대상 배열에서 복사를 시작할 index 위치,
+        // 복사 결과를 저장할 대상 배열, 대상 배열에서 복사를 시작할 index 위치, 복사할 요소의 수)
         System.arraycopy(one, 0, copy, 0, one.length);
         System.arraycopy(two, 0, copy, one.length, two.length);
         return copy;
