@@ -12,7 +12,7 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
         int N = Integer.parseInt(st.nextToken()); // 듣도 못한 사람의 수
         int M = Integer.parseInt(st.nextToken()); // 보도 못한 사람의 수
-
+/*
         // key : 이름, value : 이름이 명단에 출연한 수
         HashMap<String, Integer> map = new HashMap<>();
         for (int i = 0; i < N + M; i++) {
@@ -29,10 +29,28 @@ public class Main {
                 count++;
             }
         }
+        */
+
+        // 듣도 못한 사람 기록
+        HashMap<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < N; i++) {
+            String name = br.readLine();
+            map.put(name, 1); // 듣도 못한 사람은 1로 기록
+        }
+
+        // 보도 못한 사람 처리 및 바로 교집합 추출
+        ArrayList<String> list = new ArrayList<>();
+        for (int i = 0; i < M; i++) {
+            String name = br.readLine();
+            if (map.containsKey(name)) { // 듣도 못한 사람 목록에 있으면
+                list.add(name); // 바로 교집합에 추가
+            }
+        }
+
         Collections.sort(list); // ArrayList를 오름차순으로 정렬
 
         StringBuilder sb = new StringBuilder();
-        sb.append(count).append("\n");
+        sb.append(list.size()).append("\n");
         for (int i = 0; i < list.size(); i++) {
             sb.append(list.get(i)).append("\n");
         }
