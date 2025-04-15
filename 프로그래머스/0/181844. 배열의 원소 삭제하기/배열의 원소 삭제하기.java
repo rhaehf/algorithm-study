@@ -6,10 +6,8 @@ class Solution {
         List<Integer> list = Arrays.stream(arr).boxed().collect(Collectors.toList());
         
         for(int num : delete_list) {
-            if(list.contains(num)) {
-                int idx = list.indexOf(num);
-                list.remove(idx);
-            }           
+            // 리스트에서 해당값 삭제
+            list.remove((Integer) num);
         }
         return list.stream().mapToInt(i -> i).toArray();
     }
