@@ -4,15 +4,15 @@ class Solution {
     public int solution(String[][] clothes) {
         HashMap<String, Integer> map = new HashMap<>();
         
-        // 옷 종류가 1개일 때
-        if(map.keySet().size() == 1)
-            return clothes.length;
-        
         // 종류별로 몇 개씩 있는지 저장
         for(String[] cloth : clothes) {
             String key = cloth[1]; // 옷 종류
             map.put(key, map.getOrDefault(key, 0) + 1); // map(옷 종류, 옷 개수)
         }
+        
+        // 옷 종류가 1개일 때
+        if(map.keySet().size() == 1)
+            return clothes.length;
         
         int answer = 1;
         for (String key : map.keySet()) {
