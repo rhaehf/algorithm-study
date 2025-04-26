@@ -1,15 +1,14 @@
 class Solution {
     public int solution(String[] order) {
-        int cntAmericano = 0;
-        int cntCafelatte = 0;
+        int price = 0;
         
         for (String menu : order) {
             if (menu.contains("cafelatte"))
-                cntCafelatte++;                
+                price += 5000;
             else
-                cntAmericano++;
+                price += 4500;
         }
         
-        return cntAmericano * 4500 + cntCafelatte * 5000;
+        return price;
     }
 }
