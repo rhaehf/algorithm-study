@@ -30,11 +30,20 @@ class Solution {
         }
         //System.out.println(Arrays.deepToString(dp)); // 2차원 배열 출력
         
+        // 마지막 줄에서 가장 큰 값 리턴
+        int max = 0;
+        for (int val : dp[triangle.length - 1]) {
+            max = Math.max(max, val);
+        }
+        return max;
+        
+        /*
         // 마지막 배열만 추출
         int[] lastArr = Arrays.copyOfRange(dp[dp.length-1], 0, dp[dp.length-1].length);
         // 오름차순 정렬
         Arrays.sort(lastArr);
-        // 마지막 인덱스 값 출력
+        // 마지막 인덱스 값 반환
         return lastArr[lastArr.length-1];
+        */
     }
 }
