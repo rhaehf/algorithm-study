@@ -24,9 +24,6 @@ class Solution {
                 billH /= 2;
 
             foldCount++;
-
-            // 더이상 접을 수 없을 때
-            if (billW == 0 || billH == 0) return -1;
         }
 
         return foldCount;
