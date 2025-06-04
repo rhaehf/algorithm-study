@@ -1,7 +1,5 @@
 class Solution {
-    public int solution(int[] wallet, int[] bill) {
-        int answer = 0;
-        
+    public int solution(int[] wallet, int[] bill) {        
         // 지갑과 지폐의 가로가 길다고 가정하고 문제를 풀었다.
         // 지갑의 가로, 세로 설정
         int walletW = Math.max(wallet[0], wallet[1]);
@@ -11,19 +9,26 @@ class Solution {
         int billW = Math.max(bill[0], bill[1]);
         int billH = Math.min(bill[0], bill[1]);
 
-        while (walletH < billH || walletW < billW) {
-            // 지폐의 긴 쪽을 반 접기
-            if (billH < billW)
-                billW = billW / 2;
-            else
-                billH = billH / 2;
+        int foldCount = 0;
 
-            answer++;
-
-            if (Math.max(billW, billH) <= walletW && Math.min(billW, billH) <= walletH)
+        while (true) {
+            // 회전 포함한 넣기 가능 조건
+            if ((billW <= walletW && billH <= walletH) ||
+                (billH <= walletW && billW <= walletH)) {
                 break;
+            }
+
+            if (billW >= billH) 
+                billW /= 2;
+            else 
+                billH /= 2;
+
+            foldCount++;
+
+            // 더이상 접을 수 없을 때
+            if (billW == 0 || billH == 0) return -1;
         }
-        
-        return answer;
+
+        return foldCount;
     }
 }
