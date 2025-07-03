@@ -22,12 +22,7 @@ class Solution {
             if (choice == 4) continue;
             
             if (choice <= 3) {
-                if (choice == 1)
-                    map.put(type1, map.getOrDefault(type1, 0) + 3);
-                else if (choice == 2)
-                    map.put(type1, map.getOrDefault(type1, 0) + 2);
-                else if (choice == 3)
-                    map.put(type1, map.getOrDefault(type1, 0) + 1);                   
+                map.put(type1, map.getOrDefault(type1, 0) + (4 - choice));                          
             } else if (5 <= choice) {
                 map.put(type2, map.getOrDefault(type2, 0) + (choice - 4));                
             }
