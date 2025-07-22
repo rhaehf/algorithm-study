@@ -1,14 +1,12 @@
-import java.util.*;
-
 public class Solution {
     public int solution(int n) {
-        //String num = String.valueOf(n);
-        String num = Integer.toString(n);
-        
         int answer = 0;
-        for (char ch : num.toCharArray())
-            answer += (ch - '0');
-
+        
+        while (n > 0) {
+            answer += n % 10; // 마지막 자릿수 더하기
+            n /= 10;          // 자릿수 줄이기
+        }
+        
         return answer;
     }
 }
