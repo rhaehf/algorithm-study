@@ -11,7 +11,7 @@ class Solution {
         
         int answer = 0;
         int len = s.length();
-        s += s; // 회전대신 같은 문자열을 더해주면 표현할 수 있음
+        s += s; // 회전대신 같은 문자열을 이어붙임
         
         // s의 길이만큼 회전시키는 동안 확인
         A:for (int i = 0; i < len; i++) {
