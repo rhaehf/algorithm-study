@@ -7,13 +7,18 @@ class Solution {
         // 3단계
         new_id = new_id.replaceAll("\\.{2,}", ".");
         // 4단계
-        new_id = new_id.replaceAll("^\\.", "");
-        new_id = new_id.replaceAll("\\.$", "");
+        //new_id = new_id.replaceAll("^\\.", "");
+        //new_id = new_id.replaceAll("\\.$", "");
+        
+        if (new_id.startsWith(".")) new_id = new_id.substring(1);
+        if (new_id.endsWith(".")) new_id = new_id.substring(0, new_id.length() - 1);     
+        
         // 5단계
         if(new_id.length() == 0) new_id = "a";
         // 6단계
         if(new_id.length() >= 16) new_id = new_id.substring(0, 15);
         new_id = new_id.replaceAll("\\.$", "");
+        
         // 7단계
         /*
         if(new_id.length() <= 2) {
