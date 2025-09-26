@@ -15,6 +15,7 @@ class Solution {
         if(new_id.length() >= 16) new_id = new_id.substring(0, 15);
         new_id = new_id.replaceAll("\\.$", "");
         // 7단계
+        /*
         if(new_id.length() <= 2) {
             char s = new_id.charAt(new_id.length() - 1);
             while (new_id.length() < 3)
@@ -22,5 +23,14 @@ class Solution {
         }
         
         return new_id;
+        */
+        
+        // 7단계 - StringBuilder 사용한 방법
+        StringBuilder sb = new StringBuilder(new_id);
+        while (sb.length() < 3) {
+            sb.append(sb.charAt(sb.length() - 1));
+        }
+
+        return sb.toString();
     }
 }
