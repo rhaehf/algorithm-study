@@ -10,13 +10,13 @@ class Solution {
         Map<String, Integer> carRecords = new HashMap<>(); // 차량 입차 기록 (차량 번호, 입차 시간(분단위))
         Map<String, Integer> parking = new HashMap<>(); // 차량별 총 주차시간 (차량 번호, 총 주차 시간)
         
-        // 주차 시간 계산하기
+        // 1. 입출차 기록 처리
         for (String record : records) {
             String[] rec = record.split(" ");
             String time = rec[0]; // 입차 또는 출차 시간
-            int minutes = toMinutes(time); // 입출차 시간을 분으로 바꿈          
+            int minutes = toMinutes(time); // 입출차 시간을 분 단위로 변환          
             String carNum = rec[1]; // 차량 번호
-            String inOut = rec[2]; // 입차, 출차 여부
+            String inOut = rec[2]; // IN / OUT
             
             if (inOut.equals("IN")) { // 입차하면 기록하기
                 carRecords.put(carNum, minutes);
@@ -27,7 +27,7 @@ class Solution {
             }                
         }
         
-        // 출차 안한 차량의 주차 시간 계산
+        // 2. 아직 출차 안 한 차량의 주차 시간 계산 (23:59 출차로 간주)
         if (!carRecords.isEmpty()) {
             for (String carNum : carRecords.keySet()) {
                 int calculate = (23 * 60 + 59) - carRecords.get(carNum);
@@ -41,10 +41,11 @@ class Solution {
         }
         */
         
-        // 차량 번호 작은거부터 정렬하고, 주차 요금 계산해서 배열에 담아서 반환하기
+        // 3. 차량 번호 오름차순 정렬
         List<String> keySet = new ArrayList<>(parking.keySet());
         Collections.sort(keySet);
         
+        // 4. 요금 계산
         int[] answer = new int[keySet.size()];
         for (int i = 0; i < keySet.size(); i++) {    
             int parkingTime = parking.get(keySet.get(i));
@@ -60,7 +61,7 @@ class Solution {
         return answer;
     }
     
-    // 시간을 분으로 바꾸기
+    // 시간을 "HH:MM" → 분으로 변환
     private static int toMinutes(String time) {
         int hour = Integer.parseInt(time.substring(0, 2)); // 들어오거나 나간 시각
         int minute = Integer.parseInt(time.substring(3)); // 들어오거나 나간 분
