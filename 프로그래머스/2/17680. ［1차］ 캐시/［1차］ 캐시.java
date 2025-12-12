@@ -8,17 +8,18 @@ class Solution {
             return 5 * cities.length;
         
         int answer = 0;
-        List<String> caches = new LinkedList<>();
+        LinkedList<String> caches = new LinkedList<>();
         
         for (String city : cities) {
              city = city.toLowerCase(); // 대소문자 구분을 하지 않음
+            
             // cache miss
             if (!caches.contains(city)) {
                 answer += 5;
                 // 캐시를 담은 리스트의 사이즈가 캐시 크기만큼 커지면
                 // 첫 번째 캐시가 가장 오래 사용하지 않은 것이므로 지우기
                 if (caches.size() >= cacheSize) {
-                    caches.remove(0);
+                    caches.removeFirst();
                 }
                 caches.add(city);                
             }
