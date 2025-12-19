@@ -10,11 +10,10 @@ class Solution {
         }
         Arrays.sort(arr);
         
-        String st = "";
-        for (int i = num.length() - 1; i >= 0; i--) {
-            st += arr[i];
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < num.length(); i++) {
+            sb.append(arr[i]);
         }
-        
-        return Long.parseLong(st);
+        return Long.parseLong(sb.reverse().toString());
     }
 }
