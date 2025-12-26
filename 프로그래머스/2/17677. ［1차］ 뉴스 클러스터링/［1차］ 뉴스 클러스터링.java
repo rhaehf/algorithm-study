@@ -26,8 +26,8 @@ class Solution {
             union += Math.max(map1.getOrDefault(key, 0), map2.getOrDefault(key, 0));
         }
         
-        double result = (double) intersection / union * 65536;
-        return (int) result;
+        // 소수점 아래를 버리고 정수부만 출력
+        return (int) Math.floor((double) intersection / union * 65536);
     }
     
     // 다중집합 만들기    
