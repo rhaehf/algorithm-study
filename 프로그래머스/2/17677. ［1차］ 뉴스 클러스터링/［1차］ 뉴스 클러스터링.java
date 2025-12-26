@@ -8,7 +8,8 @@ class Solution {
         // 집합이 모두 공집합이면 자카드 유사도는 1로 정의한다.
         if (map1.isEmpty() && map2.isEmpty()) return 65536;
         
-        int intersection = 0; // 교집합        
+        int intersection = 0; // 교집합
+        
         // 교집합 구하기
         for (String key1 : map1.keySet()) {
             // 같은 값을 여러개 가질 때
@@ -17,13 +18,30 @@ class Solution {
         }
         
         int union = 0; // 합집합
+        
+        /*
+        // 합집합 구하기 1
         Set<String> allKeys = new HashSet<>();
         allKeys.addAll(map1.keySet());
         allKeys.addAll(map2.keySet());
         
-        // 합집합 구하기
+        
         for (String key : allKeys) {
             union += Math.max(map1.getOrDefault(key, 0), map2.getOrDefault(key, 0));
+        }
+        */
+        
+        // 합집합 구하기 2
+        // map1 기준
+        for (String key : map1.keySet()) {
+            union += Math.max(map1.get(key), map2.getOrDefault(key, 0));
+        }
+    
+        // map2에만 있는 키
+        for (String key : map2.keySet()) {
+            if (!map1.containsKey(key)) {
+                union += map2.get(key);
+            }
         }
         
         // 소수점 아래를 버리고 정수부만 출력
