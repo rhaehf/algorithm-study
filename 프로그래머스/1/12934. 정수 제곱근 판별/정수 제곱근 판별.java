@@ -1,10 +1,9 @@
 class Solution {
     public long solution(long n) {
-        double result = Math.sqrt(n);
-        long test = (long) result;
+        long result = (long) Math.sqrt(n);
         
-        if (test * test == n)
-            return (test + 1) * (test + 1);
+        if (result * result == n)
+            return (result + 1) * (result + 1);
         else
             return -1;
     }
