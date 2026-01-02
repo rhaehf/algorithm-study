@@ -2,7 +2,8 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] progresses, int[] speeds) {
-        Queue<Integer> answer = new ArrayDeque<>();
+        //Queue<Integer> answer = new ArrayDeque<>();
+        List<Integer> answer = new ArrayList<>();
         int n = progresses.length;
         
         int[] leftWork = new int[n]; // 배포까지 남은 작업일
