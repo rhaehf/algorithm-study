@@ -28,8 +28,7 @@ class Solution {
         // 3. 정지 대상자를 신고한 사람들 이름에 해당하는 인덱스로 받아야하는 메일을 카운트한다. 
         int[] mailCounts = new int[id_list.length];
         for (String banned : bannedUsers) {
-            Set<String> names = reportedBy.get(banned);
-            for (String name : names) {
+            for (String name : reportedBy.get(banned)) {
                 mailCounts[idx.get(name)]++;
             }                
         }
