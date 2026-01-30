@@ -1,6 +1,5 @@
 class Solution {
     boolean solution(String s) {
-        boolean answer = true;
         int pcnt = 0;
         int ycnt = 0;
         
@@ -10,9 +9,7 @@ class Solution {
             else if (c == 'y')
                 ycnt++;
         }
-
-        if (pcnt != ycnt) answer = false;
         
-        return answer;
+        return pcnt == ycnt;
     }
 }
