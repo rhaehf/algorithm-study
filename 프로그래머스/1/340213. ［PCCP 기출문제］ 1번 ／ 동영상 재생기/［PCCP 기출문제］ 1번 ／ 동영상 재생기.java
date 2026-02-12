@@ -7,35 +7,30 @@ class Solution {
         int end = timeToSec(op_end);
         
         // 시작 위치가 오프닝 구간인지 확인
-        now = checkOpening(now, start, end);
+        now = skipOpening(now, start, end);
         
-        for (String order : commands) {
-            // 10초 전으로 이동
-            if (order.equals("prev")) {
+        for (String cmd : commands) {
+            if (cmd.equals("prev")) {
                 // 현재 위치가 10초 미만이면 영상 처음으로 이동
-                if (now < 10) now = 0;
-                else now -= 10;
+                // 아니면 현재 위치에서 10초 전으로 이동
+                now = Math.max(0, now - 10);
             } 
-            // 10초 후로 이동
-            else {
+            else { // next
                 // 남은 시간이 10초 미만이면 영상 마지막으로 이동
-                if ((video - now) < 10) now = video;
-                else now += 10;
+                // 아니면 현재 위치에서 10초 후로 이동
+                now = Math.min(video, now + 10);
             }
             
             // 이동할 때마다 오프닝 구간인지 확인
-            now = checkOpening(now, start, end);
+            now = skipOpening(now, start, end);
         }
         
         return String.format("%02d:%02d", now / 60, now % 60);
     }
     
     // 현재 재생 위치가 오프닝 사이에 있다면 오프닝 끝으로 이동 
-    private int checkOpening(int now, int start, int end) {
-        if (start <= now && now <= end) {
-            return end;
-        }
-        return now;
+    private int skipOpening(int now, int start, int end) {
+        return (start <= now && now <= end) ? end : now;
     }
     
     // 시간 초로 변환
