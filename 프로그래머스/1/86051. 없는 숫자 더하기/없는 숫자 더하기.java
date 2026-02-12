@@ -1,8 +1,8 @@
 class Solution {
     public int solution(int[] numbers) {
-        int sum = 0;
+        int sum = 45;
         for (int n : numbers)
-            sum += n;
-        return 45 - sum;
+            sum -= n;
+        return sum;
     }
 }
