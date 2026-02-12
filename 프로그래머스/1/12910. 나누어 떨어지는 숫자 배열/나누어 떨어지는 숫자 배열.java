@@ -9,7 +9,7 @@ class Solution {
                 list.add(a);
         }
         
-        if (list.size() == 0) list.add(-1);
+        if (list.isEmpty()) return new int[] {-1};
         
         Collections.sort(list);
         int[] answer = new int[list.size()];
